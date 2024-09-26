@@ -7,66 +7,78 @@ namespace AqsaP13DoctorsOffice
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void label2_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
-            double taxRate = .0875;
-            double rate, totalRate
-            string PatientName;
 
-            //input
-            price = double.Parse(txtInsuranceRate.Text);
-            PatientName = txtInsuranceRate.Text;
-
-            //processing
-            totalRate = (rate * taxRate) + price;
-            totalPrice = price + taxAmount;
-
-            //output
-            lstOut.Items.Add("Patient Name is " + PatientName);
-            lstOut.Items.Add("Price is " + price.ToString("C2"));
-            lstOut.Items.Add("tax amount is " + taxAmount.ToString("C2"));
-            lstOut.Items.Add("Total Price is " + totalPrice);
-
-            //This changes the focus to the clear button
-            //btnClear.Focus();
         }
 
-        private void btnClear_Click(object sender, EventArgs e)
+        private void txtAmount_TextChanged(object sender, EventArgs e)
         {
-            txtPatientName.Clear();
-            txtInsuranceType.Clear();
-            lstOut.Items.Clear();
-            txtPatientName.Focus();
+
         }
 
         private void btnQuit_Click(object sender, EventArgs e)
         {
-            this.Close():
+            //this will end the program
+            this.Close();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            //this will clear the textbox and anything in listbox 
+            PatientName.Clear();
+            txtAmount_Text = string.Empty;
+            lstOut.Items.Clear();
+            txtPatientName.Focus();
         }
 
         private void txtPatientName_Enter(object sender, EventArgs e)
         {
-            txtPatientName.Backcolor = Color.White Bisque;
+            PatientName.Backcolor = Color.Blue;
+
         }
 
-        private void txtPatientName_leave(object sender, EventArgs e)
+        private void txtPatientName_Leave(object sender, EventArgs e)
         {
-            txtPatientName.Backcolor = SystemColors.Window;
+            PatientName.Backcolor = SystemColors.Windows;
+        }
+
+        private void btnCalc_Click(object sender, EventArgs e)
+        {
+            string PatientName;
+            double Amount;
+            double TotalPrice, InsuranceAmount;
+
+            double InsuranceRate = 0.05;
+
+            //input
+            PatientName = PatientName.Text;
+            Amount = double.Parse(txtAmount.Text);
+
+            //processing
+            InsuranceAmount = Amount * InsuranceRate;
+            TotalPrice = Amount + InsuranceAmount;
+
+            //output
+            lstOut.Items.Add("Your patient name is" + PatientName);
+            lstOut.Items.Add("The amount is" + Amount.ToString("C"));
+            lstOut.Items.Add("The insurance is" + InsuranceAmount.ToString("C")) +
+                "(" + InsuranceRate.ToString("P") + ")"); ; }
+            lstOut.Items.Add("Your total amount is " + TotalPrice.ToString("C"));
+
+
         }
     }
 }
+            
+            
+            
+            
+            
+            
+           
